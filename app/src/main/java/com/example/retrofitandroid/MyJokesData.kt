@@ -1,8 +1,15 @@
 package com.example.retrofitandroid
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+
+@Entity(tableName = "joke")
 data class MyJokesData(
 
-    val categories: List<Any>,
+    @PrimaryKey(autoGenerate = true)
+    val uid:Int,
+
     val created_at: String,
     val icon_url: String,
     val id: String,

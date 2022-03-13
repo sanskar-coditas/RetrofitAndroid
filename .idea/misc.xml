@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Only Project/RetrofitAndroid/app/src/main/res/layout/activity_main.xml" value="0.12760416666666666" />
+        <entry key="..\:/Only Project/RetrofitAndroid/app/src/main/res/drawable/bg_gradient.xml" value="0.12" />
+        <entry key="..\:/Only Project/RetrofitAndroid/app/src/main/res/drawable/corner.xml" value="0.1" />
+        <entry key="..\:/Only Project/RetrofitAndroid/app/src/main/res/drawable/ic_baseline_skip_next_24.xml" value="0.1" />
+        <entry key="..\:/Only Project/RetrofitAndroid/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Only Project/RetrofitAndroid/app/src/main/res/layout/activity_main.xml" value="0.14666666666666667" />
       </map>
     </option>
   </component>
