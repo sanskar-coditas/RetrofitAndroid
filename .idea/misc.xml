@@ -7,7 +7,9 @@
         <entry key="..\:/Only Project/RetrofitAndroid/app/src/main/res/drawable/corner.xml" value="0.1" />
         <entry key="..\:/Only Project/RetrofitAndroid/app/src/main/res/drawable/ic_baseline_skip_next_24.xml" value="0.1" />
         <entry key="..\:/Only Project/RetrofitAndroid/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Only Project/RetrofitAndroid/app/src/main/res/layout/activity_all_jokes.xml" value="0.12239583333333333" />
         <entry key="..\:/Only Project/RetrofitAndroid/app/src/main/res/layout/activity_main.xml" value="0.14666666666666667" />
+        <entry key="..\:/Only Project/RetrofitAndroid/app/src/main/res/layout/single_joke_item.xml" value="0.12239583333333333" />
       </map>
     </option>
   </component>
