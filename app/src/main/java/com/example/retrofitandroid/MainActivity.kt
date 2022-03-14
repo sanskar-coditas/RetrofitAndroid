@@ -2,7 +2,8 @@ package com.example.retrofitandroid
 
 import JokesDataRepo
 import MainViewModel
-import android.content.ContentValues.TAG
+
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,17 +13,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.roomdbdemo.db.JokesDatabase
-import com.google.android.material.tabs.TabLayout
+
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
+
 import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.GlobalScope
+
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+
 import java.lang.StringBuilder
 
 
@@ -40,13 +37,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val buttonForNextJokes : Button= findViewById(R.id.nextButton)
-
-       val DAO = JokesDatabase.getDatabase(applicationContext).jokesDoa()
-        val repository = JokesDataRepo(DAO)
+        val buttonForJokeList:Button=findViewById(R.id.allJokesList)
+       val dao = JokesDatabase.getDatabase(applicationContext).jokesDoa()
+        val repository = JokesDataRepo(dao)
         mainViewModel = ViewModelProvider(this,MainViewModelFactory(repository)).get(MainViewModel::class.java)
-
-
-
 
 
         buttonForNextJokes.setOnClickListener {
@@ -56,31 +50,31 @@ class MainActivity : AppCompatActivity() {
             }
         txtForData= findViewById(R.id.txtForData)
 
+        buttonForJokeList.setOnClickListener {
+        val intent= Intent(this,JokesAllActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
-     private suspend fun getMyData() {
+    private suspend fun getMyData() {
 
-        val response= ApiInterface().getData()
+        val response = ApiInterface().getData()
         val responseBody = response.body()!!
         val myStringBuilder = StringBuilder()
         myStringBuilder.append(responseBody.value)
         myStringBuilder.append("\n")
         Log.d("MainActivity", "IDOFJOKE: $myStringBuilder")
-        txtForData.text =myStringBuilder
-
-
+        txtForData.text = myStringBuilder
         Log.e("MainActivity", "Database of joke: $responseBody")
-            mainViewModel.insertJokes(responseBody)
+        mainViewModel.insertJokes(responseBody)
+        mainViewModel.getJokes().observe(this, Observer {
+
+            Log.i("Show data final", it.toString())
+        })
 
 
+    }
 
-         mainViewModel.getJokes().observe(this, Observer {
-
-             Log.i("Show data final",  it.toString())
-         })
-
-
-
-        }
 
 }

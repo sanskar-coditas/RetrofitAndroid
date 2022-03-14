@@ -11,9 +11,7 @@ class MainViewModel(private val jokesDataRepo: JokesDataRepo): ViewModel()
 {
     fun getJokes() : LiveData<List<MyJokesData>>
     {
-
         return jokesDataRepo.getJokes()
-
 
     }
     fun insertJokes(myJokesData: MyJokesData)
